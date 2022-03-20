@@ -1,5 +1,7 @@
 ## service-worker 最佳实践
 
+`!!!发布到生产环境前，请务必充分调试，确保html是可以更新，不然可能会带来难以想象的灾难`
+
 特点：
 
 缓存静态资源，优先取缓存的，同时发起一次请求
@@ -10,9 +12,17 @@
 
 ## 注意
 
-本地开发要使用 `localhost`，而不是127.0.0.1
+1、本地开发要使用 `localhost`，而不是127.0.0.1
 
 因为 serviceWorker 的安全策略是 https, http下的 localhost也被认可
+
+2、最好只在生产环境中启动 serviceWorker，避免本地开发 资源不及时更新 带来的 调试困难
+
+```js
+if(navigator.serviceWorker && location.origin === "https://yourhost.com"){
+    // 注册逻辑代码
+}
+```
 
 ## 启动
 
