@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SW-Test</title>
+        <script>
+            if (navigator.serviceWorker) {
+                // For security reasons, a service worker can only control the pages that are in the same directory level or below it. That's why we put sw.js at ROOT level.
+                navigator.serviceWorker
+                    .register('/sw.js')
+                    .then((registration) => {
+                        console.log('Service Worker Registered. ', registration);
+                    })
+                    .catch((error) => {
+                        console.log('ServiceWorker registration failed: ', error);
+                    });
+            }
+            // if ('serviceWorker' in navigator) {
+            //     navigator.serviceWorker
+            //         .register('/unsw.js')
+            //         .then(function (registration) {
+            //             // registration worked
+            //             console.log('Registration succeeded.');
+            //             registration.unregister().then(function (boolean) {
+            //                 console.log(`unregister ${boolean}`);
+            //                 // if boolean = true, unregister is successful
+            //             });
+            //         })
+            //         .catch(function (error) {
+            //             // registration failed
+            //             console.log('Registration failed with ' + error);
+            //         });
+            // }
+        </script>
+        <link rel="stylesheet" href="/index.css" />
+        <script src="/public/index.js"></script>
+        <!-- <script src="/public/echarts.min.js"></script> -->
+        <script
+            type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.8.0/echarts.min.js"
+        ></script>
+    </head>
+    <body>
+        <div>SW-test</div>
+    </body>
+</html>
